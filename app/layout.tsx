@@ -1,30 +1,28 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google"; // Replaced Geist with Inter as Geist doesn't exist
 import "./globals.css";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
-  : "http://localhost:3000"
+  : "http://localhost:3000";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "waki cards",
-  description: "the worlds best flashcard learning system",
+  title: "Waki Cards",
+  description: "The world's best flashcard learning system",
   icons: {
-    icon: [{ url: "/favicon-196.png", sizes: "196x196", type: "image/png" }],
-    apple: [{ url: "/apple-icon-180.png" }],
+    icon: [
+      { url: "/favicon-196.png", sizes: "196x196", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-icon-180.png" },
+    ],
   },
-  appleTouchIcon: "/apple-icon-180.png",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
@@ -201,18 +199,16 @@ export const metadata: Metadata = {
       },
     ],
   },
-}
+};
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${inter.variable} antialiased`}>
         {children}
       </body>
     </html>
